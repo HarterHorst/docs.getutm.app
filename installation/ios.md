@@ -21,7 +21,7 @@ UTM SE is a stripped down version of UTM which does not support JIT and uses a s
 
 ## Non-Jailbroken Devices
 
-**If you are running iOS 11, 12, or 13**: UTM does not require a jailbreak to use, but you must sideload it. If you are new to sideloading, it is a way to use a developer's certificate to load unapproved apps on a non-jailbroken iOS device. There are a few limitations to sideloading:
+**If you are running iOS 11, 12, or 13**: UTM works with JIT when sideloading. If you are new to sideloading, it is a way to use a developer's certificate to load unapproved apps on a non-jailbroken iOS device. There are a few limitations to sideloading:
 
 * Free developer accounts must re-sign every 7 days
 * Paid developer accounts must re-sign every 1 year
@@ -29,17 +29,28 @@ UTM SE is a stripped down version of UTM which does not support JIT and uses a s
 {: .note }
 The last version of UTM that supports iOS 11-13 is [v3.2.4](https://github.com/utmapp/UTM/releases/tag/v3.2.4).
 
-**If you are running iOS 14.2, 14.3**: UTM works with sideloading (non-jailbroken) if your device has an Apple A12 chip or newer. Otherwise, keep reading.
+**If you are running iOS 14.2, 14.3**: UTM works with JIT when sideloading if your device has an Apple A12 chip or newer. Otherwise, keep reading.
 
-**If you are running iOS 14.0, 14.1, 14.4, or higher**: UTM works if you are jailbroken or [semi-tethered with Jitterbug][9], AltJIT, or [Jitstreamer][10]. "Semi-tethered" means either tethered to a Mac/PC, to another iOS device with Wifi sharing, or to itself (one iOS device running both Jitterbug/AltJIT and UTM) through a on-device VPN profile.
+**If you are running iOS 14.0, 14.1, 14.4, or higher**: UTM works with JIT when sideloading if you are semi-tethered. "Semi-tethered" means either tethered to a Mac/PC (e.g. AltJIT), to another iOS device with Wifi sharing, or to itself (e.g. [StikDebug][10]) through a on-device VPN profile. Follow [this guide][9] for more information on enabling JIT for side-loaded apps.
 
 ### AltStore Repository
 
-When installing from the repository, you can receive update prompts from AltStore.
+[AltStore][4] is the recommended way to sideload UTM because it can receive updates and refresh app signing every 7 days.
 
 1. Install [AltStore][4]
 2. Add the source: [https://alt.getutm.app][5]
 3. Download UTM from AltStore
+
+### SideStore
+
+[SideStore][12] is an alternative to AltStore that does not require a PC/Mac to refresh and is also recommended for sideloading UTM. You can use the same repository source as AltStore.
+
+### TrollStore
+
+If your device runs [TrollStore][11] (limited to certain devices on an older firmware version), then UTM can support additional features such as USB sharing and virtualization (currently limited to M1 iPads or newer). You can install via TrollStore by downloading the TrollStore compatible IPA (UTM.HV.ipa) on your device and opening it with TrollStore.
+
+{: .note }
+You cannot install the normal IPA (UTM.ipa) because it includes the `dynamic-codesigning` entitlements which TrollStore does not support.
 
 ### Other Methods
 
@@ -49,13 +60,6 @@ You can check if you have the right signing certificate by going to `Settings ->
 
 {: .note }
 UTM SE does not support JIT (will run much slower) but is compatible with all signing services.
-
-## TrollStore
-
-If your device runs [TrollStore][11], then UTM can support additional features such as USB sharing and virtualization (currently limited to M1 iPads or newer). You can install via TrollStore by downloading the TrollStore compatible IPA (UTM.HV.ipa) on your device and opening it with TrollStore.
-
-{: .note }
-You cannot install the normal IPA (UTM.ipa) because it includes the `dynamic-codesigning` entitlements which TrollStore does not support.
 
 ## Jailbroken Devices
 
@@ -74,7 +78,7 @@ UTM requires AppSync Unified which can be found on [Karen's Repo][8]. You need t
 | [UTM.SE.ipa](https://github.com/utmapp/UTM/releases/latest/download/UTM-SE.ipa) | Non-jailbroken iOS version (sideloading) | AltStore, enterprise signing, etc | No | No | No |
 
 1. Hypervisor on iOS requires an M1 iPad or newer.
-2. Enabling JIT may require a separate JIT enabler such as [Jitterbug][9] or [Jitstreamer][10].
+2. Enabling JIT may require a separate JIT enabler such as [StikDebug][10].
 
   [1]: https://github.com/utmapp/UTM/releases/latest
   [2]: https://dantheman827.github.io/ios-app-signer/
@@ -84,6 +88,7 @@ UTM requires AppSync Unified which can be found on [Karen's Repo][8]. You need t
   [6]: https://repo.dynastic.co/package/altdaemon
   [7]: cydia://url/https://cydia.saurik.com/api/share#?source=https://cydia.getutm.app/
   [8]: cydia://url/https://cydia.saurik.com/api/share#?source=https://cydia.akemi.ai/
-  [9]: https://github.com/osy/Jitterbug
-  [10]: https://github.com/jkcoxson/JitStreamer
+  [9]: https://docs.sidestore.io/docs/advanced/jit/
+  [10]: https://apps.apple.com/us/app/stikdebug/id6744045754
   [11]: https://github.com/opa334/TrollStore
+  [12]: https://docs.sidestore.io
